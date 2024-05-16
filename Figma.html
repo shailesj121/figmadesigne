@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Inter:wght@200;300;400;500;600;700;800&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Konkhmer+Sleokchher&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Reddit+Mono:wght@200..900&family=Reem+Kufi+Fun:wght@400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ropa+Sans:ital@0;1&display=swap"
+    rel="stylesheet" />
+  <script src="script.js" defer></script>
+  <title>MBscan</title>
+</head>
+
+<body>
+  <header>
+    <span><img src="./img/dummy-logo-GREEN.png" width="100px" /></span>
+    <span style="padding-left: 40px; font-size: 23px"><i onclick="menufuncion()"
+        class="fa-solid fa-bars menubar"></i></span>
+  </header>
+  <main class="main-box">
+    <sidebar id="sidebar">
+      <h3 class="heading_text">Spifftest</h3>
+      <div class="menus">
+        <ul style="list-style: none">
+          <li><i class="fa-solid fa-house-chimney"></i> Home</li>
+          <li class="active">
+            <i class="fa-solid fa-users"></i> Create/Edit USer
+          </li>
+          <li><i class="fa-solid fa-right-from-bracket"></i> Logout</li>
+        </ul>
+      </div>
+    </sidebar>
+    <div class="main_content">
+      <div class="device_id">
+        <div>
+          <p class="id_notify">Device Id Connected</p>
+          <h4>MBS000007 <i class="fa-solid fa-chevron-down"></i></h4>
+        </div>
+
+        <div class="temperature">
+          <p class="temp_text">Temp:</p>
+          <h3>33.5C</h3>
+        </div>
+        <div class="choose_opt">
+          <p class="select_opt_check">
+            <input type="checkbox" name="select" id="" /> select
+          </p>
+
+          <ul class="list_buttons">
+            <li>
+              <span style="padding-bottom: 10px"><input type="radio" name="White" id="" />
+                <span style="color: gray">White</span></span>
+            </li>
+            <li>
+              <button class="start_btn">
+                <i class="fa-solid fa-play"></i> Start
+              </button>
+            </li>
+            <li>
+              <button><i class="fa-solid fa-stop"></i> Stop</button>
+            </li>
+          </ul>
+        </div>
+        <div class="device_setting">
+          <div style="display: flex; align-items: center">
+            <i style="font-size: 23px" class="fa-solid fa-gear"></i>
+            <span style="padding-left: 5px">Device settings</span>
+          </div>
+        </div>
+      </div>
+      <div id="all_cards" class="all_cards">
+        
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+</body>
+
+</html>
