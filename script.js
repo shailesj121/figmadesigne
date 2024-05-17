@@ -113,7 +113,6 @@ function counter(data) {
     let clicked = true
 
     const counterId = document.getElementById(data)
-    // counterId.removeEventListener('click', (event)=> {myfunction(counterId, event)})
     counterId.innerHTML = countdown;
     let countminutes = 58;
     let counthours = 3;
@@ -140,17 +139,19 @@ function counter(data) {
             counterId.children[1].innerHTML = " ";
             counterId.style.background = "#00a814"
             counterId.style.color = "White"
-            counterId.addEventListener('click', (event)=> {myfunction(counterId, event)})
             countInProcess = false
                    
         }
     }, 1000)
+    counterId.addEventListener('click', ()=> {myfunction(counterId)})
 }
 
-const myfunction = (counterId, event)=> {
+const myfunction = (counterId)=> {
     if(countInProcess){
-return
-    // counterId.addEventListener('click', (event)=> ()=>{})
+        counterId.addEventListener('click', (event)=>{
+            console.log()
+        })
+    return
     }
     counterId.innerHTML = startComp
     countminutes = 58   
