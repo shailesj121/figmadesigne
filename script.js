@@ -19,6 +19,7 @@ function menufuncion() {
 let selected = "no"
 let firstSelect = 0
 let startId = 0
+let countInProcess = true
 
 
 const whiteHtml = ` <button onclick="whiteFn(event, {select:true})" class="take_white">Yes</button>
@@ -33,18 +34,13 @@ const complition = `<button onclick="takeWhite(event)" class="take_white">Take W
 
 
 for(let i= 1; i <= 16; i++ ){
-    iscompleated = false;
-    if(id == 5){
-        id=1
-        iscompleated = true;
-    }
     
 allCards.innerHTML  += `<div class="card">
 <div class="inner_card uncompleated ">   
-  <p>${id}</p>
+  <p>${i}</p>
   <h4 class="as" style="padding: 0"></h4>
   <h4><input class="inputSampleName" placeholder="Enter Sample Name" type="text"/></h4>
-  <div>
+  <div id = "${i}">
   <button onclick="takeWhite(event)" class="take_white">
   Take White
 </button>
@@ -67,6 +63,7 @@ const backgroundCounter = (percentage) => {
 }
 
 function takeWhite(event) {
+    event.stopPropagation();
     if (firstSelect === 0) {
         const perntNode = event.srcElement.parentNode.parentNode
         console.dir(perntNode.children[1].innerText = "White?")
@@ -77,6 +74,7 @@ function takeWhite(event) {
 }
 
 function whiteFn(event, select) {
+    event.stopPropagation();
     if (select.select) {
         const perntNode = event.srcElement.parentNode.parentNode
         console.dir(perntNode.children[1].innerText = "")
@@ -97,23 +95,32 @@ function whiteFn(event, select) {
 
 
 function startTime(event) {
-    event.srcElement.parentNode.setAttribute('id', startId)
+    event.stopPropagation();
+
     event.srcElement.parentNode.setAttribute('class', "countertimer")
     const perntNode = event.srcElement.parentNode.parentNode
-    startId += 1
-    console.dir(perntNode.children[1].innerText = "")
+    // console.dir(event.srcElement.parentNode.parentNode)
+  if(perntNode.getElementsByTagName("input")[0].value == ""){
+    perntNode.getElementsByTagName("input")[0].value = event.srcElement.parentNode.parentNode.children[0].innerText
+  }
+
+    const startId = event.srcElement.parentNode.attributes[0].nodeValue
     event.srcElement.parentNode.innerHTML = countdown
-    counter(startId - 1)
+    counter(startId)
 }
 
 function counter(data) {
+    let clicked = true
+
     const counterId = document.getElementById(data)
-    let countminutes = 0;
-    let counthours = 0;
+    // counterId.removeEventListener('click', (event)=> {myfunction(counterId, event)})
+    counterId.innerHTML = countdown;
+    let countminutes = 58;
+    let counthours = 3;
     let totalMinutes = 240
     let initialnumber = 0
     counterId.style.background = backgroundCounter(0)
-
+    
     const myInterval = setInterval(() => {
         ++countminutes
         counterId.children[0].children[1].innerHTML = countminutes
@@ -130,12 +137,24 @@ function counter(data) {
         }
         if (counthours == 4) {
             clearInterval(myInterval)
-            counterId.innerHTML = complition;
-           counterId.parentNode.classList.replace("uncompleated", "compleated")
-            
+            counterId.children[1].innerHTML = " ";
+            counterId.style.background = "#00a814"
+            counterId.style.color = "White"
+            counterId.addEventListener('click', (event)=> {myfunction(counterId, event)})
+            countInProcess = false
+                   
         }
     }, 1000)
 }
 
-
+const myfunction = (counterId, event)=> {
+    if(countInProcess){
+return
+    // counterId.addEventListener('click', (event)=> ()=>{})
+    }
+    counterId.innerHTML = startComp
+    countminutes = 58   
+    counthours = 3;    
+    countInProcess = true
+}
 

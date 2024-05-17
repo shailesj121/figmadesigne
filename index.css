@@ -95,6 +95,7 @@ sidebar {
 
 button.take_white {
     border: 1px solid #80808054 !important;
+    background-color: white;
 }
 
 .inner_card div button {
@@ -312,4 +313,8 @@ cursor: pointer;
         box-sizing: border-box;
         width: 100%;
     }
+}
+
+input.inputSampleName:focus-visible {
+    outline: 0px;
 }
